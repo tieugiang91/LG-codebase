@@ -2,12 +2,7 @@ package isp;
 
 import java.util.List;
 
-public class LoanPayment implements Payment {
-
-    @Override
-    public void initiatePayments() {
-
-    }
+public class LoanPayment implements Loan {
 
     @Override
     public Object status() {
