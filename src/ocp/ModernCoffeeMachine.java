@@ -5,14 +5,15 @@ import ocp.entity.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BasicCoffeeMachine implements CoffeeMachine{
-
+public class ModernCoffeeMachine implements CoffeeMachine {
     private Map<CoffeeSelection, Configuration> configMap;
     private Map<CoffeeSelection, GroundCoffee> groundCoffee;
+    private Grinder grinder;
     private BrewingUnit brewingUnit;
 
-    public BasicCoffeeMachine(Map<CoffeeSelection, GroundCoffee> coffee) {
+    public ModernCoffeeMachine(Map<CoffeeSelection, GroundCoffee> coffee) {
         this.groundCoffee = coffee;
+        this.grinder = new Grinder();
         this.brewingUnit = new BrewingUnit();
 
         this.configMap = new HashMap<>();
@@ -25,22 +26,9 @@ public class BasicCoffeeMachine implements CoffeeMachine{
         Configuration config = configMap.get(selection);
 
         // get the coffee
-        GroundCoffee groundCoffee = this.groundCoffee.get(selection);
+        GroundCoffee groundCoffee = this.grinder.grind(null, 0);
 
         // brew a filter coffee
         return this.brewingUnit.brew(selection, groundCoffee, config.getQuantityWater());
-    }
-
-    public void addGroundCoffee(CoffeeSelection sel, GroundCoffee newCoffee) throws CoffeeException {
-        GroundCoffee existingCoffee = this.groundCoffee.get(sel);
-        if (existingCoffee != null) {
-            if (existingCoffee.getName().equals(newCoffee.getName())) {
-                existingCoffee.setQuantity(existingCoffee.getQuantity() + newCoffee.getQuantity());
-            } else {
-                throw new CoffeeException("Only one kind of coffee supported for each CoffeeSelection.");
-            }
-        } else {
-            this.groundCoffee.put(sel, newCoffee);
-        }
     }
 }
