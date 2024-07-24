@@ -7,13 +7,15 @@ public class Employee {
     private final String employeeName;
     private final LocalTime start;
     private final LocalTime end;
+    private static Employee instance;
 
     // Constructor
-    public Employee(String employeeName, LocalTime start, LocalTime end) {
+    private Employee(String employeeName, LocalTime start, LocalTime end) {
         this.employeeName = employeeName;
         this.start = start;
         this.end = end;
     }
+
 
     // Method to calculate pay based on regular hours and don't pay for overtime
     public double calculatePay(LocalTime start, LocalTime end)
@@ -53,15 +55,14 @@ public class Employee {
         return totalHoursWorked / 60.0;  // Return total non-overtime hours worked
     }
 
-    public static void main(String[] args) {
-        // Example usage:
+
+
+    public static Employee getInstance() {
         LocalTime start = LocalTime.of(11, 0);  // Regular start time at 9 AM
         LocalTime end = LocalTime.of(18, 0);
-        Employee emp = new Employee("John Doe", start , end); // Creating an employee with 45 hours worked
-        emp.save();
-        System.out.println(emp.getEmployeeName() + " works on time for: " + emp.reportHours());
-        System.out.println(emp.getEmployeeName() + " works totally for: " + start.until(end, ChronoUnit.MINUTES)/60.0);
-        System.out.println(emp.getEmployeeName() + "is paid: $" + emp.calculatePay(start, end));
+        if(instance == null) {
+            instance = new Employee("hello", start, end);
+        }
+        return instance;
     }
-
 }

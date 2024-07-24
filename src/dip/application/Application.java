@@ -1,11 +1,14 @@
 package dip.application;
 
 import dip.daoimplementations.SimpleCustomerDao;
+import dip.daos.CustomerDao;
 import dip.entities.Customer;
 import dip.services.CustomerService;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class Application {
 

@@ -2,12 +2,8 @@ package isp;
 
 import java.util.List;
 
-public class LoanPayment implements Payment {
+public class LoanPayment implements Loan {
 
-    @Override
-    public void initiatePayments() {
-
-    }
 
     @Override
     public Object status() {
@@ -26,6 +22,6 @@ public class LoanPayment implements Payment {
 
     @Override
     public void initiateRePayment() {
-
+        throw new UnsupportedOperationException("This is not a loan payment");
     }
 }
