@@ -1,7 +1,7 @@
 package lsp;
 
-class Rectangle {
-    private int width, height;
+class Rectangle implements Polygon{
+    protected int width, height;
 
     public Rectangle(int width, int height) {
         this.width = width;
@@ -16,12 +16,13 @@ class Rectangle {
         this.height = val;
     }
 
+    @Override
     public int area() {
         return width * height;
     }
 }
 
-class Square extends Rectangle {
+class Square extends Rectangle implements Polygon {
 
     public Square(int width) {
         super(width, width);
@@ -36,13 +37,18 @@ class Square extends Rectangle {
         super.setWidth(val);
 //        super.setHeight(val); // Enable this, then rectangle height * width = width ^ 2
     }
+
+    @Override
+    public int area() {
+        return width * width;
+    }
 }
 
 public class LiskovBasic {
     public static void main(String[] args) {
 //        Rectangle rect = new Rectangle(40, 30);
         Rectangle rect = new Square(40);
-        rect.setWidth(50); // The square is no longer a square!
+//        rect.setWidth(50); // The square is no longer a square!
         System.out.println(rect.area());
     }
 }
