@@ -8,12 +8,11 @@ import ocp.entity.GroundCoffee;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class BasicCoffeeApp {
 
-    private BasicCoffeeMachine coffeeMachine;
+    private CoffeeMachine coffeeMachine;
 
-    public BasicCoffeeApp(BasicCoffeeMachine coffeeMachine) {
+    public BasicCoffeeApp(CoffeeMachine coffeeMachine) {
         this.coffeeMachine = coffeeMachine;
     }
 
@@ -29,14 +28,14 @@ public class BasicCoffeeApp {
         beans.put(CoffeeSelection.FILTER_COFFEE, new GroundCoffee("My favorite filter coffee bean", 1000));
 
         // get a new CoffeeMachine object
-        BasicCoffeeMachine machine = new BasicCoffeeMachine(beans);
+        CoffeeMachine machine = new BasicCoffeeMachine(beans);
 
         // Instantiate CoffeeApp
         BasicCoffeeApp app = new BasicCoffeeApp(machine);
 
         // brew a fresh coffee
         try {
-            app.prepareCoffee(CoffeeSelection.ESPRESSO);
+            app.prepareCoffee(CoffeeSelection.FILTER_COFFEE);
         } catch (CoffeeException e) {
             e.printStackTrace();
         }

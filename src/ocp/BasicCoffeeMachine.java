@@ -5,7 +5,7 @@ import ocp.entity.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BasicCoffeeMachine {
+public class BasicCoffeeMachine implements CoffeeMachine {
 
     private Map<CoffeeSelection, Configuration> configMap;
     private Map<CoffeeSelection, GroundCoffee> groundCoffee;
@@ -19,11 +19,16 @@ public class BasicCoffeeMachine {
         this.configMap.put(CoffeeSelection.FILTER_COFFEE, new Configuration(30, 480));
     }
 
-    public Coffee brewCoffee(CoffeeSelection selection) {
+    @Override
+    public Coffee brewCoffee(CoffeeSelection selection) throws CoffeeException {
         Configuration config = configMap.get(selection);
 
         // get the coffee
         GroundCoffee groundCoffee = this.groundCoffee.get(selection);
+
+        if (groundCoffee == null) {
+            throw new CoffeeException("No ground coffee found for selection: " + selection);
+        }
 
         // brew a filter coffee
         return this.brewingUnit.brew(selection, groundCoffee, config.getQuantityWater());
