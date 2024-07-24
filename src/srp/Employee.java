@@ -55,6 +55,18 @@ public class Employee {
 
     public static void main(String[] args) {
         // Example usage:
+//        LocalTime start = LocalTime.of(11, 0);  // Regular start time at 9 AM
+//        LocalTime end = LocalTime.of(18, 0);
+////        Employee emp = new Employee("John Doe", start , end); // Creating an employee with 45 hours worked
+////        emp.save();
+//        EmployeeData emp = new EmployeeData("John Doe", start , end);
+//        EmployeeSaver employeeSaver = new EmployeeSaver(emp);
+//        PayCalculator payCalculator = new PayCalculator(emp);
+//        HourReporter hourReporter = new HourReporter(emp);
+//        System.out.println(emp.getEmployeeName() + " works on time for: " + hourReporter.reportHours());
+//        System.out.println(emp.getEmployeeName() + " works totally for: " + start.until(end, ChronoUnit.MINUTES)/60.0);
+//        System.out.println(emp.getEmployeeName() + "is paid: $" + payCalculator.calculatePay(start, end));
+
         LocalTime start = LocalTime.of(11, 0);  // Regular start time at 9 AM
         LocalTime end = LocalTime.of(18, 0);
         Employee emp = new Employee("John Doe", start , end); // Creating an employee with 45 hours worked
