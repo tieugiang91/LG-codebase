@@ -1,6 +1,6 @@
 package dip.application;
 
-import dip.daoimplementations.SimpleCustomerDao;
+import dip.application.interfaces.ICustomerService;
 import dip.entities.Customer;
 import dip.services.CustomerService;
 
@@ -13,7 +13,7 @@ public class Application {
         Map<Integer, Customer> customers = new HashMap<>();
         customers.put(1, new Customer("John"));
         customers.put(2, new Customer("Susan"));
-        CustomerService customerService = new CustomerService(new SimpleCustomerDao(customers));
+        ICustomerService customerService = new CustomerService(customers);
         customerService.findAll().forEach(System.out::println);
     }
 }

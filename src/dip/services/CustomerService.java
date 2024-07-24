@@ -1,16 +1,20 @@
 package dip.services;
 
+import dip.application.interfaces.ICustomerService;
 import dip.daoimplementations.SimpleCustomerDao;
 import dip.entities.Customer;
+import dip.services.interfaces.ICustomerDao;
 
 import java.util.List;
+import java.util.Map;
 
-public class CustomerService {
+public class CustomerService implements ICustomerService {
 
-    private final SimpleCustomerDao customerDao;
+    private final ICustomerDao customerDao;
 
-    public CustomerService(SimpleCustomerDao customerDao) {
-        this.customerDao = customerDao;
+    public CustomerService(Map<Integer, Customer> customers) {
+        this.customerDao = new SimpleCustomerDao(customers);
+//        this.customerDao = null;
     }
 
     public List<Customer> findAll() {
