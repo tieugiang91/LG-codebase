@@ -26,6 +26,14 @@ public class Employee {
         return employeeName;
     }
 
+    public LocalTime getEnd() {
+        return end;
+    }
+
+    public LocalTime getStart() {
+        return start;
+    }
+
     // Method to report hours with overtime
     public int reportHours() {
         return (int) regularHours(start, end);

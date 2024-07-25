@@ -1,10 +1,11 @@
 package dip.daoimplementations;
 
 import dip.entities.Customer;
+import dip.services.ICustomerDao;
 
 import java.util.*;
 
-public class SimpleCustomerDao {
+public class SimpleCustomerDao implements ICustomerDao {
 
     private Map<Integer, Customer> customers;
 
@@ -12,12 +13,12 @@ public class SimpleCustomerDao {
         this.customers = customers;
     }
 
-
+    @Override
     public Optional<Customer> findById(int id) {
         return Optional.ofNullable(customers.get(id));
     }
 
-
+    @Override
     public List<Customer> findAll() {
         return new ArrayList<>(customers.values());
     }

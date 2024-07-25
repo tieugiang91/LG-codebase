@@ -5,7 +5,7 @@ import ocp.entity.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BasicCoffeeMachine {
+public class BasicCoffeeMachine implements CoffeeMachine {
 
     private Map<CoffeeSelection, Configuration> configMap;
     private Map<CoffeeSelection, GroundCoffee> groundCoffee;
@@ -19,6 +19,7 @@ public class BasicCoffeeMachine {
         this.configMap.put(CoffeeSelection.FILTER_COFFEE, new Configuration(30, 480));
     }
 
+    @Override
     public Coffee brewCoffee(CoffeeSelection selection) {
         Configuration config = configMap.get(selection);
 
