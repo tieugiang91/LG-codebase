@@ -19,7 +19,7 @@ public class SingletonOperation {
     public void showMessage() {
         System.out.println("Hello world 123");
     }
-    private String getSingletonData() {
+    public String getSingletonData() {
         return singletonData;
     }
 }
