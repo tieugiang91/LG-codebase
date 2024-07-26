@@ -1,7 +1,6 @@
 package dip.entities;
 
 public class Customer {
-
     private final String name;
 
     public Customer(String name) {
@@ -9,11 +8,10 @@ public class Customer {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    @Override
     public String toString() {
-        return "Customer{" + "name=" + name + '}';
+        return "Customer{name=" + this.name + "}";
     }
 }

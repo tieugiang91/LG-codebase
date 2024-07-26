@@ -1,19 +1,16 @@
 package ocp;
 
+import java.util.HashMap;
+import java.util.Map;
 import ocp.entity.Coffee;
 import ocp.entity.CoffeeException;
 import ocp.entity.CoffeeSelection;
 import ocp.entity.GroundCoffee;
 
-import java.util.HashMap;
-import java.util.Map;
-
-
 public class BasicCoffeeApp {
+    private CoffeeMachine coffeeMachine;
 
-    private BasicCoffeeMachine coffeeMachine;
-
-    public BasicCoffeeApp(BasicCoffeeMachine coffeeMachine) {
+    public BasicCoffeeApp(CoffeeMachine coffeeMachine) {
         this.coffeeMachine = coffeeMachine;
     }
 
@@ -24,21 +21,17 @@ public class BasicCoffeeApp {
     }
 
     public static void main(String[] args) {
-        // create a Map of available coffee beans
-        Map<CoffeeSelection, GroundCoffee> beans = new HashMap<>();
+        Map<CoffeeSelection, GroundCoffee> beans = new HashMap();
         beans.put(CoffeeSelection.FILTER_COFFEE, new GroundCoffee("My favorite filter coffee bean", 1000));
+        CoffeeMachine modernMachine = new ModernCoffeeMachine(beans);
+        BasicCoffeeApp app = new BasicCoffeeApp(modernMachine);
 
-        // get a new CoffeeMachine object
-        BasicCoffeeMachine machine = new BasicCoffeeMachine(beans);
-
-        // Instantiate CoffeeApp
-        BasicCoffeeApp app = new BasicCoffeeApp(machine);
-
-        // brew a fresh coffee
         try {
             app.prepareCoffee(CoffeeSelection.ESPRESSO);
-        } catch (CoffeeException e) {
+        } catch (CoffeeException var5) {
+            CoffeeException e = var5;
             e.printStackTrace();
         }
-    } // end main
-} // end CoffeeApp
+
+    }
+}
